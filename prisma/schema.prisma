@@ -14,15 +14,124 @@ datasource db {
 }
 
 model Time {
-  id        Int         @id @default(autoincrement())
-  name      String
-  jogadores Jogadores[]
+  id       Int      @id @default(autoincrement())
+  nome     String
+  sigla    String?
+  estadio  String?
+  cidade   String?
+  // Relacionamentos
+  jogadores Jogador[]
+  classificacao Classificacao?
+  estatisticasTime EstatisticasTime[]
+  jogosCasa Jogos[] @relation("TimeCasa")
+  jogosVisitante Jogos[] @relation("TimeVisitante")
 }
 
-model Jogadores {
-  id   Int    @id @default(autoincrement())
-  name String
+model Classificacao {
+  id           Int    @id @default(autoincrement())
+  pontos       Int
+  jogos        Int
+  vitorias     Int
+  derrotas     Int
+  empates      Int
+  golsMarcados Int
+  golsSofridos Int
+  saldoGols    Int
+  posicao      Int
+  timeId       Int    @unique
+  time         Time   @relation(fields: [timeId], references: [id])
+}
 
-  Time   Time? @relation(fields: [timeId], references: [id])
-  timeId Int?
+model Jogos {
+  id               Int    @id @default(autoincrement())
+  timeCasaId       Int
+  timeVisitanteId  Int
+  placarCasa       Int
+  placarVisitante  Int
+  pontosCasa       Int
+  pontosVisitante  Int
+  dataJogo         DateTime
+  estadio          String?
+  juiz             String?
+  status           String? // "encerrado", "em andamento", etc.
+
+  // Relacionamentos
+  timeCasa       Time @relation("TimeCasa", fields: [timeCasaId], references: [id])
+  timeVisitante  Time @relation("TimeVisitante", fields: [timeVisitanteId], references: [id])
+  estatisticasTime EstatisticasTime[]
+  estatisticasJogador EstatisticasJogador[]
+  eventosJogo    EventosJogo[]
+  lesoes         Lesoes[]
+}
+
+model EstatisticasTime {
+  id               Int     @id @default(autoincrement())
+  jogoId           Int
+  timeId           Int
+  chutes           Int
+  chutesGol        Int
+  posseBola        Float
+  passes           Int
+  precisaoPasse    Float
+  faltas           Int
+  cartoesAmarelos  Int
+  cartoesVermelhos Int
+  impedimentos     Int
+  escanteios       Int
+
+  // Relacionamentos
+  jogo Jogos @relation(fields: [jogoId], references: [id])
+  time Time @relation(fields: [timeId], references: [id])
+}
+
+model Jogador {
+  id          Int     @id @default(autoincrement())
+  nome        String
+  numeroCamisa Int
+  posicao     String
+  timeId      Int
+  // Relacionamentos
+  time         Time @relation(fields: [timeId], references: [id])
+  estatisticas EstatisticasJogador[]
+  eventos      EventosJogo[]
+  lesoes       Lesoes[]
+}
+
+model EstatisticasJogador {
+  id              Int     @id @default(autoincrement())
+  jogoId          Int
+  jogadorId       Int
+  gols            Int
+  assistencias    Int
+  cartoesAmarelos Int
+  cartoesVermelhos Int
+
+  // Relacionamentos
+  jogo    Jogos    @relation(fields: [jogoId], references: [id])
+  jogador Jogador  @relation(fields: [jogadorId], references: [id])
+}
+
+model EventosJogo {
+  id          Int    @id @default(autoincrement())
+  jogoId      Int
+  jogadorId   Int
+  tipoEvento  String // "gol", "cartão amarelo", "cartão vermelho"
+  minuto      Int
+
+  // Relacionamentos
+  jogo    Jogos   @relation(fields: [jogoId], references: [id])
+  jogador Jogador @relation(fields: [jogadorId], references: [id])
+}
+
+model Lesoes {
+  id            Int     @id @default(autoincrement())
+  jogoId        Int
+  jogadorId     Int
+  minutoOcorrido Int
+  tipoLesao     String
+  descricao     String?
+
+  // Relacionamentos
+  jogo    Jogos   @relation(fields: [jogoId], references: [id])
+  jogador Jogador @relation(fields: [jogadorId], references: [id])
 }
