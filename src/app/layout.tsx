@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+"use client";
 import localFont from "next/font/local";
 import "./globals.css";
 import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider, useQuery } from "@tanstack/react-query";
+import { metadata } from "./metadata";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,11 +15,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
-export const metadata: Metadata = {
-  title: "Football Stats - Resultados e Estatísticas de Jogos",
-  description: "Acompanhe os últimos resultados, estatísticas detalhadas, classificação e dados completos das partidas de futebol do Brasileirão e outras ligas.",
-};
 
 export default function RootLayout({
   children,
@@ -32,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider client = {queryClient}>
+        <QueryClientProvider client={queryClient}>
           {children}
         </QueryClientProvider>
 
