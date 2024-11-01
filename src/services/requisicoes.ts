@@ -1,6 +1,6 @@
 // src/pages/api/fase.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../lib/prisma';
+import prisma from '../lib/prisma';
 import axios from 'axios';
 
 const apiKey = process.env.FUTEBOL_API_KEY;
@@ -110,8 +110,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           'Authorization': `Bearer ${apiKey}`,
         },
       });
-
-      console.log(responseCampeonato.data)
 
       const fase = response.data;
       const campeonatoi = responseCampeonato.data;
