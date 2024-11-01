@@ -13,22 +13,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Time {
-  id       Int      @id @default(autoincrement())
-  nome     String
-  sigla    String?
-  estadio  String?
-  cidade   String?
-  // Relacionamentos
-  jogadores Jogador[]
-  classificacao Classificacao?
-  estatisticasTime EstatisticasTime[]
-  jogosCasa Jogos[] @relation("TimeCasa")
-  jogosVisitante Jogos[] @relation("TimeVisitante")
+model Campeonato {
+  id           Int            @id @default(autoincrement())
+  nome         String
+  slug         String
+  tipo         String
+  edicaoAtual  String
+  status       Boolean
+  logo         String?
+  jogos        Jogos[] // Relacionamento com a tabela Jogos
+  estatisticas Estatisticas[]
 }
 
-model Classificacao {
-  id           Int    @id @default(autoincrement())
+model Time {
+  id               Int                @id @default(autoincrement())
+  nome             String
+  sigla            String?
+  estadio          String?
+  cidade           String?
+  escudo           String?
+  // Relacionamentos
+  jogadores        Jogador[]
+  estatisticas     Estatisticas[]
+  estatisticasTime EstatisticasTime[]
+  jogosCasa        Jogos[]            @relation("TimeCasa")
+  jogosVisitante   Jogos[]            @relation("TimeVisitante")
+}
+
+model Estatisticas {
+  id           Int        @id @default(autoincrement())
   pontos       Int
   jogos        Int
   vitorias     Int
@@ -38,34 +51,40 @@ model Classificacao {
   golsSofridos Int
   saldoGols    Int
   posicao      Int
-  timeId       Int    @unique
-  time         Time   @relation(fields: [timeId], references: [id])
+  timeId       Int        @unique
+  nomeTime     String
+  escudo       String?
+  campeonatoId Int
+  time         Time       @relation(fields: [timeId], references: [id])
+  campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
 }
 
 model Jogos {
-  id               Int    @id @default(autoincrement())
-  timeCasaId       Int
-  timeVisitanteId  Int
-  placarCasa       Int
-  placarVisitante  Int
-  pontosCasa       Int
-  pontosVisitante  Int
-  dataJogo         DateTime
-  estadio          String?
-  juiz             String?
-  status           String? // "encerrado", "em andamento", etc.
+  id              Int      @id @default(autoincrement())
+  timeCasaId      Int
+  timeVisitanteId Int
+  placarCasa      Int
+  placarVisitante Int
+  pontosCasa      Int
+  pontosVisitante Int
+  campeonatoId    Int
+  dataJogo        DateTime
+  estadio         String?
+  juiz            String?
+  status          String? // "encerrado", "em andamento", etc.
 
   // Relacionamentos
-  timeCasa       Time @relation("TimeCasa", fields: [timeCasaId], references: [id])
-  timeVisitante  Time @relation("TimeVisitante", fields: [timeVisitanteId], references: [id])
-  estatisticasTime EstatisticasTime[]
+  timeCasa            Time                  @relation("TimeCasa", fields: [timeCasaId], references: [id])
+  timeVisitante       Time                  @relation("TimeVisitante", fields: [timeVisitanteId], references: [id])
+  estatisticasTime    EstatisticasTime[]
   estatisticasJogador EstatisticasJogador[]
-  eventosJogo    EventosJogo[]
-  lesoes         Lesoes[]
+  eventosJogo         EventosJogo[]
+  lesoes              Lesoes[]
+  campeonato          Campeonato            @relation(fields: [campeonatoId], references: [id])
 }
 
 model EstatisticasTime {
-  id               Int     @id @default(autoincrement())
+  id               Int   @id @default(autoincrement())
   jogoId           Int
   timeId           Int
   chutes           Int
@@ -81,42 +100,42 @@ model EstatisticasTime {
 
   // Relacionamentos
   jogo Jogos @relation(fields: [jogoId], references: [id])
-  time Time @relation(fields: [timeId], references: [id])
+  time Time  @relation(fields: [timeId], references: [id])
 }
 
 model Jogador {
-  id          Int     @id @default(autoincrement())
-  nome        String
+  id           Int                   @id @default(autoincrement())
+  nome         String
   numeroCamisa Int
-  posicao     String
-  timeId      Int
+  posicao      String
+  timeId       Int
   // Relacionamentos
-  time         Time @relation(fields: [timeId], references: [id])
+  time         Time                  @relation(fields: [timeId], references: [id])
   estatisticas EstatisticasJogador[]
   eventos      EventosJogo[]
   lesoes       Lesoes[]
 }
 
 model EstatisticasJogador {
-  id              Int     @id @default(autoincrement())
-  jogoId          Int
-  jogadorId       Int
-  gols            Int
-  assistencias    Int
-  cartoesAmarelos Int
+  id               Int @id @default(autoincrement())
+  jogoId           Int
+  jogadorId        Int
+  gols             Int
+  assistencias     Int
+  cartoesAmarelos  Int
   cartoesVermelhos Int
 
   // Relacionamentos
-  jogo    Jogos    @relation(fields: [jogoId], references: [id])
-  jogador Jogador  @relation(fields: [jogadorId], references: [id])
+  jogo    Jogos   @relation(fields: [jogoId], references: [id])
+  jogador Jogador @relation(fields: [jogadorId], references: [id])
 }
 
 model EventosJogo {
-  id          Int    @id @default(autoincrement())
-  jogoId      Int
-  jogadorId   Int
-  tipoEvento  String // "gol", "cartão amarelo", "cartão vermelho"
-  minuto      Int
+  id         Int    @id @default(autoincrement())
+  jogoId     Int
+  jogadorId  Int
+  tipoEvento String // "gol", "cartão amarelo", "cartão vermelho"
+  minuto     Int
 
   // Relacionamentos
   jogo    Jogos   @relation(fields: [jogoId], references: [id])
@@ -124,12 +143,12 @@ model EventosJogo {
 }
 
 model Lesoes {
-  id            Int     @id @default(autoincrement())
-  jogoId        Int
-  jogadorId     Int
+  id             Int     @id @default(autoincrement())
+  jogoId         Int
+  jogadorId      Int
   minutoOcorrido Int
-  tipoLesao     String
-  descricao     String?
+  tipoLesao      String
+  descricao      String?
 
   // Relacionamentos
   jogo    Jogos   @relation(fields: [jogoId], references: [id])
