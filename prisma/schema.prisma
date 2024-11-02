@@ -21,7 +21,6 @@ model Campeonato {
   edicaoAtual  String
   status       Boolean
   logo         String?
-  jogos        Jogos[] // Relacionamento com a tabela Jogos
   estatisticas Estatisticas[]
 }
 
@@ -36,8 +35,6 @@ model Time {
   jogadores        Jogador[]
   estatisticas     Estatisticas[]
   estatisticasTime EstatisticasTime[]
-  jogosCasa        Jogos[]            @relation("TimeCasa")
-  jogosVisitante   Jogos[]            @relation("TimeVisitante")
 }
 
 model Estatisticas {
@@ -59,28 +56,19 @@ model Estatisticas {
   campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
 }
 
-model Jogos {
-  id              Int      @id @default(autoincrement())
-  timeCasaId      Int
-  timeVisitanteId Int
-  placarCasa      Int
-  placarVisitante Int
-  pontosCasa      Int
-  pontosVisitante Int
-  campeonatoId    Int
-  dataJogo        DateTime
-  estadio         String?
-  juiz            String?
-  status          String? // "encerrado", "em andamento", etc.
-
-  // Relacionamentos
-  timeCasa            Time                  @relation("TimeCasa", fields: [timeCasaId], references: [id])
-  timeVisitante       Time                  @relation("TimeVisitante", fields: [timeVisitanteId], references: [id])
-  estatisticasTime    EstatisticasTime[]
-  estatisticasJogador EstatisticasJogador[]
-  eventosJogo         EventosJogo[]
-  lesoes              Lesoes[]
-  campeonato          Campeonato            @relation(fields: [campeonatoId], references: [id])
+model Partida {
+  partida_id            Int      @id @unique
+  time_mandante_id      Int
+  time_mandante_nome    String
+  time_mandante_sigla   String
+  time_mandante_escudo  String
+  time_visitante_id     Int
+  time_visitante_nome   String
+  time_visitante_sigla  String
+  time_visitante_escudo String
+  status                String
+  slug                  String   @unique
+  data_realizacao       DateTime
 }
 
 model EstatisticasTime {
@@ -99,8 +87,7 @@ model EstatisticasTime {
   escanteios       Int
 
   // Relacionamentos
-  jogo Jogos @relation(fields: [jogoId], references: [id])
-  time Time  @relation(fields: [timeId], references: [id])
+  time Time @relation(fields: [timeId], references: [id])
 }
 
 model Jogador {
@@ -112,8 +99,6 @@ model Jogador {
   // Relacionamentos
   time         Time                  @relation(fields: [timeId], references: [id])
   estatisticas EstatisticasJogador[]
-  eventos      EventosJogo[]
-  lesoes       Lesoes[]
 }
 
 model EstatisticasJogador {
@@ -126,31 +111,5 @@ model EstatisticasJogador {
   cartoesVermelhos Int
 
   // Relacionamentos
-  jogo    Jogos   @relation(fields: [jogoId], references: [id])
-  jogador Jogador @relation(fields: [jogadorId], references: [id])
-}
-
-model EventosJogo {
-  id         Int    @id @default(autoincrement())
-  jogoId     Int
-  jogadorId  Int
-  tipoEvento String // "gol", "cartão amarelo", "cartão vermelho"
-  minuto     Int
-
-  // Relacionamentos
-  jogo    Jogos   @relation(fields: [jogoId], references: [id])
-  jogador Jogador @relation(fields: [jogadorId], references: [id])
-}
-
-model Lesoes {
-  id             Int     @id @default(autoincrement())
-  jogoId         Int
-  jogadorId      Int
-  minutoOcorrido Int
-  tipoLesao      String
-  descricao      String?
-
-  // Relacionamentos
-  jogo    Jogos   @relation(fields: [jogoId], references: [id])
   jogador Jogador @relation(fields: [jogadorId], references: [id])
 }
