@@ -85,11 +85,11 @@ interface Fase {
   eliminatorio: boolean;
   ida_e_volta: boolean;
   tipo: string;
-  grupos: any[]; // Ajuste o tipo conforme a estrutura dos grupos, se necessário
-  chaves: any[]; // Ajuste o tipo conforme a estrutura das chaves, se necessário
-  rodadas: any[]; // Ajuste o tipo conforme a estrutura das rodadas, se necessário
-  proxima_fase: null | any; // Ajuste o tipo conforme a estrutura da próxima fase, se necessário
-  fase_anterior: null | any; // Ajuste o tipo conforme a estrutura da fase anterior, se necessário
+  grupos: any[];
+  chaves: any[];
+  rodadas: any[];
+  proxima_fase: null | any;
+  fase_anterior: null | any;
 }
 
 
@@ -113,8 +113,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const fase = response.data;
       const campeonatoi = responseCampeonato.data;
 
-      const campeonato = await prisma.campeonato.create({
-        data: {
+      const campeonato = await prisma.campeonato.upsert({
+        where: { slug: campeonatoi.edicao.slug },
+        update: {
+          edicaoAtual: campeonatoi.edicao.temporada,
+          status: true,
+          tipo: "pontos corridos",
+          logo: campeonatoi.campeonato.logo,
+        },
+        create: {
           edicaoAtual: campeonatoi.edicao.temporada,
           nome: campeonatoi.campeonato.nome,
           status: true,
@@ -122,19 +129,39 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           tipo: "pontos corridos",
           logo: campeonatoi.campeonato.logo,
         }
-      })
+      });
 
       await Promise.all([...fase.map(async (item) => {
-        const Time = await prisma.time.create({
-          data: {
+        const Time = await prisma.time.upsert({
+          where: { id: item.time.time_id },
+          update: {
             nome: item.time.nome_popular,
             escudo: item.time.escudo,
             sigla: item.time.sigla,
+          },
+          create: {
             id: item.time.time_id,
+            nome: item.time.nome_popular,
+            escudo: item.time.escudo,
+            sigla: item.time.sigla,
           }
-        })
-        await prisma.estatisticas.create({
-          data: {
+        });
+
+        await prisma.estatisticas.upsert({
+          where: { timeId_campeonatoId: { timeId: Time.id, campeonatoId: campeonato.id } },
+          update: {
+            posicao: item.posicao,
+            derrotas: item.derrotas,
+            empates: item.empates,
+            vitorias: item.vitorias,
+            golsMarcados: item.gols_pro,
+            golsSofridos: item.gols_contra,
+            jogos: item.jogos,
+            pontos: item.pontos,
+            saldoGols: item.saldo_gols,
+            escudo: item.time.escudo,
+          },
+          create: {
             posicao: item.posicao,
             derrotas: item.derrotas,
             empates: item.empates,
@@ -149,7 +176,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             campeonatoId: campeonato.id,
             timeId: Time.id,
           }
-        })
+        });
       })])
 
       res.status(200).json({ message: 'Fase e partidas atualizadas com sucesso' });
@@ -158,7 +185,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       res.status(500).json({ error: 'Erro ao buscar dados' });
     }
   } else {
-    res.status(405).end(); // Método não permitido
+    res.status(405).end();
   }
 }
 

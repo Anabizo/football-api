@@ -16,7 +16,7 @@ datasource db {
 model Campeonato {
   id           Int            @id @default(autoincrement())
   nome         String
-  slug         String
+  slug         String         @unique
   tipo         String
   edicaoAtual  String
   status       Boolean
@@ -48,12 +48,14 @@ model Estatisticas {
   golsSofridos Int
   saldoGols    Int
   posicao      Int
-  timeId       Int        @unique
+  timeId       Int
   nomeTime     String
   escudo       String?
   campeonatoId Int
   time         Time       @relation(fields: [timeId], references: [id])
   campeonato   Campeonato @relation(fields: [campeonatoId], references: [id])
+
+  @@unique([timeId, campeonatoId])
 }
 
 model Partida {

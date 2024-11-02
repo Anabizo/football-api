@@ -81,8 +81,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 });
             }
 
-            const filePath = path.join(process.cwd(), 'partidasId.json');
-            fs.writeFileSync(filePath, JSON.stringify(partidasFinalizadas, null, 2), 'utf-8');
+            const totalPartidas = await prisma.partida.count();
+            if (totalPartidas > 10) {
+                // Primeiro, encontre as IDs das partidas mais antigas que queremos deletar
+                const partidasParaDeletar = await prisma.partida.findMany({
+                    orderBy: { data_realizacao: 'desc' },
+                    skip: 10, // Mantém as 10 partidas mais recentes
+                    select: { partida_id: true }, // Seleciona apenas os IDs para deletar
+                });
+
+                // Delete as partidas usando os IDs
+                await prisma.partida.deleteMany({
+                    where: {
+                        partida_id: {
+                            in: partidasParaDeletar.map((p) => p.partida_id),
+                        },
+                    },
+                });
+            }
+
+            const filePath = path.join(process.cwd(), 'partidas.json');
+            fs.writeFileSync(filePath, JSON.stringify(todasPartidas, null, 2), 'utf-8');
 
             console.log('Dados salvos em partidas.json');
             res.status(200).json({ message: 'Partidas atualizadas com sucesso' });
