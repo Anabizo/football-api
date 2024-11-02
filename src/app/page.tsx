@@ -40,10 +40,10 @@ export default function ClassificacaoPage() {
   if (isError) return <p>Erro ao carregar os dados da classificação</p>
 
   return (
-    <div className="bg-purple-400  ">
+    <div className="bg-purple-400 min-h-screen bg-cover bg-center">
       <div className="pt-10 flex items-center justify-center gap-10 px-60">
         <button
-          className="text-lg bg-purple-950 text-white border-gray-950 hover:bg-pink-700 rounded-3xl border-3 h-9 w-36"
+          className="text-lg bg-purple-950 text-white border-2 border-white hover:bg-pink-700 rounded-3xl h-9 w-36"
           onClick={() => {
             refetch();
             window.location.href = '/';
@@ -52,10 +52,10 @@ export default function ClassificacaoPage() {
           Classificação
         </button>
         <button
-          className="text-lg bg-purple-950 text-white border-gray-950 hover:bg-pink-700 rounded-3xl border-3 h-9 w-36"
+          className="text-lg bg-purple-950 text-white hover:bg-pink-700 rounded-3xl h-9 w-36"
           onClick={() => {
             refetch();
-            window.location.href = '/partida';
+            window.location.href = '/partidas';
           }}
         >
           Partidas

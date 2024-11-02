@@ -40,17 +40,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const partidas: Record<string, Record<string, Partida[]>> = response.data.partidas['fase-unica'];
 
-            // Converte todas as rodadas em um único array de partidas
             const todasPartidas: Partida[] = Object.values(partidas)
                 .flatMap((rodada) => Object.values(rodada).flat());
 
-            // Filtra as partidas finalizadas e ordena pela data de realização
             const partidasFinalizadas: Partida[] = todasPartidas
                 .filter((partida) => partida.status === 'finalizado')
                 .sort((a, b) => new Date(b.data_realizacao_iso).getTime() - new Date(a.data_realizacao_iso).getTime())
                 .slice(0, 10);
 
-            // Insere ou atualiza as partidas no banco de dados
             for (const partida of partidasFinalizadas) {
                 await prisma.partida.upsert({
                     where: { partida_id: partida.partida_id },

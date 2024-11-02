@@ -1,6 +1,5 @@
-// src/pages/api/fase.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../lib/prisma';
+import prisma from '../../lib/prisma';
 import axios from 'axios';
 
 const apiKey = process.env.FUTEBOL_API_KEY;
