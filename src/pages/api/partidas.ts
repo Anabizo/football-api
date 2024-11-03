@@ -4,7 +4,7 @@ import prisma from '../../lib/prisma';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         try {
-            // Buscando as 10 partidas mais recentes com status "finalizado"
+
             const partidas = await prisma.partida.findMany({
                 where: { status: 'finalizado' },
                 orderBy: { data_realizacao: 'desc' },
