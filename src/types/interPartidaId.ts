@@ -192,3 +192,32 @@ export type Cartao = {
     minuto: string | null;
     periodo: string;
 };
+
+export interface PartidaId {
+    id: number;
+    timeMandanteId: number;
+    timeVisitanteId: number;
+    timeMandanteNome: string;
+    timeVisitanteNome: string;
+    placarMandante: number;
+    placarVisitante: number;
+    nomeEstadio: string;
+    status: string;
+    chutesMandante: number;
+    chutesVisitante: number;
+    chutesAGolMandante: number;
+    chutesAGolVisitante: number;
+    posseDeBolaMandante: string;
+    posseDeBolaVisitante: string;
+    passesMandante: number;
+    passesVisitante: number;
+    precisaoPassesMandante: string;
+    precisaoPassesVisitante: string;
+    faltasMandante: number;
+    faltasVisitante: number;
+    impedimentosMandante: number;
+    impedimentosVisitante: number;
+    escanteiosMandante: number;
+    escanteiosVisitante: number;
+    dataRealizacao?: Date;
+}

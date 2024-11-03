@@ -38,7 +38,7 @@ export default function Partidas() {
         <div className="bg-purple-400 min-h-screen">
             <div className="pt-10 flex items-center justify-center gap-10 px-60">
                 <button
-                    className="text-lg bg-purple-950 text-white border-gray-950 hover:bg-pink-700 rounded-3xl border-3 h-9 w-36"
+                    className="text-lg bg-purple-950 text-white hover:bg-pink-700 rounded-3xl h-9 w-36"
                     onClick={() => {
                         refetch();
                         window.location.href = '/';
@@ -62,7 +62,7 @@ export default function Partidas() {
 
                     <ul className="grid grid-cols-2 gap-x-12 gap-y-4">
                         {partidas.map((partida: Partida) => (
-                            <Link href={`/partida/${partida.partida_id}`} key={partida.partida_id}>
+                            <Link href={`/partidaId/${partida.partida_id}`} key={partida.partida_id}>
                                 <li className="py-4 px-2 flex flex-col justify-start items-start hover:bg-gray-500 rounded-2xl">
                                     <div className="flex">
                                         <div className="flex-col">
