@@ -1,4 +1,3 @@
-import cron from 'node-cron';
 import axios from 'axios';
 
 export async function fetchClassificacao() {
@@ -28,11 +27,3 @@ export async function fetchPartidas() {
     }
 }
 
-export function startCronJobs() {
-    cron.schedule('0 3 * * *', fetchClassificacao);
-    cron.schedule('5 3 * * *', fetchPartidas);
-    cron.schedule('10 3 * * *', fetchPartidaId);
-
-
-    console.log('Cron jobs configurados para as APIs.');
-}

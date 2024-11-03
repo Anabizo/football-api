@@ -35,8 +35,12 @@ export default function Partidas() {
 
     return (
 
-        <div className="bg-purple-400 min-h-screen">
-            <div className="pt-10 flex items-center justify-center gap-10 px-60">
+        <div className="bg-purple-400 min-h-screen pb-7 bg-center">
+            <div className="pb-2 pt-5 flex items-center justify-center" >
+                <img src={('/imagens/brasileirao.png')} alt={'brasileirao'} style={{ width: 96, height: 96, marginRight: 8 }} />
+                <h1 className="text-4xl text-white font-bold  p-2 ">Brasileirão Série A</h1>
+            </div>
+            <div className="pt-5 pb-3 flex items-center justify-center gap-10 px-60">
                 <button
                     className="text-lg bg-purple-950 text-white hover:bg-pink-700 rounded-3xl h-9 w-36"
                     onClick={() => {

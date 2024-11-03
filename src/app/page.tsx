@@ -19,6 +19,7 @@ interface ClassificacaoTime {
   posicao: number;
   pontos: number;
   time: Time;
+  campeonato: Campeonato;
   jogos: number;
   vitorias: number;
   empates: number;
@@ -31,6 +32,18 @@ interface ClassificacaoTime {
   ultimos_jogos: string[];
 }
 
+interface Campeonato {
+  id: number;
+  nome: string;
+  slug: string;
+  tipo: string;
+  edicaoAtual: string;
+  status: boolean;
+  logo: string;
+}
+
+
+
 
 export default function ClassificacaoPage() {
 
@@ -40,8 +53,12 @@ export default function ClassificacaoPage() {
   if (isError) return <p>Erro ao carregar os dados da classificação</p>
 
   return (
-    <div className="bg-purple-400 min-h-screen bg-cover bg-center">
-      <div className="pt-10 flex items-center justify-center gap-10 px-60">
+    <div className="bg-purple-400 min-h-screen bg-center">
+      <div className="pt-5 flex items-center justify-center" >
+        <img src={('/imagens/brasileirao.png')} alt={'brasileirao'} style={{ width: 96, height: 96, marginRight: 8 }} />
+        <h1 className="text-4xl text-white font-bold">Brasileirão Série A</h1>
+      </div>
+      <div className="pt-5 pb-3 flex items-center justify-center gap-10 px-60">
         <button
           className="text-lg bg-purple-950 text-white border-2 border-white hover:bg-pink-700 rounded-3xl h-9 w-36"
           onClick={() => {
