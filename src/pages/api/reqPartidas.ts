@@ -6,7 +6,7 @@ import path from 'path';
 
 const apiKey = process.env.FUTEBOL_API_KEY;
 
-interface Partida {
+export interface Partida {
     partida_id: number;
     time_mandante: {
         time_id: number;
@@ -83,14 +83,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
             const totalPartidas = await prisma.partida.count();
             if (totalPartidas > 10) {
-                // Primeiro, encontre as IDs das partidas mais antigas que queremos deletar
                 const partidasParaDeletar = await prisma.partida.findMany({
                     orderBy: { data_realizacao: 'desc' },
-                    skip: 10, // Mantém as 10 partidas mais recentes
-                    select: { partida_id: true }, // Seleciona apenas os IDs para deletar
+                    skip: 10,
+                    select: { partida_id: true },
                 });
 
-                // Delete as partidas usando os IDs
                 await prisma.partida.deleteMany({
                     where: {
                         partida_id: {
