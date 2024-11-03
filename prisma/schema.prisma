@@ -25,16 +25,14 @@ model Campeonato {
 }
 
 model Time {
-  id               Int                @id @default(autoincrement())
-  nome             String
-  sigla            String?
-  estadio          String?
-  cidade           String?
-  escudo           String?
+  id           Int            @id @default(autoincrement())
+  nome         String
+  sigla        String?
+  estadio      String?
+  cidade       String?
+  escudo       String?
   // Relacionamentos
-  jogadores        Jogador[]
-  estatisticas     Estatisticas[]
-  estatisticasTime EstatisticasTime[]
+  estatisticas Estatisticas[]
 }
 
 model Estatisticas {
@@ -73,45 +71,92 @@ model Partida {
   data_realizacao       DateTime
 }
 
-model EstatisticasTime {
-  id               Int   @id @default(autoincrement())
-  jogoId           Int
-  timeId           Int
-  chutes           Int
-  chutesGol        Int
-  posseBola        Float
-  passes           Int
-  precisaoPasse    Float
-  faltas           Int
-  cartoesAmarelos  Int
-  cartoesVermelhos Int
-  impedimentos     Int
-  escanteios       Int
-
-  // Relacionamentos
-  time Time @relation(fields: [timeId], references: [id])
+model PartidaId {
+  id                        Int                       @id @default(autoincrement())
+  timeMandanteId            Int
+  timeVisitanteId           Int
+  placarMandante            Int
+  placarVisitante           Int
+  dataRealizacao            DateTime
+  horaRealizacao            DateTime
+  nomeEstadio               String
+  status                    String
+  chutesMandante            Int
+  chutesVisitante           Int
+  chutesAGolMandante        Int
+  chutesAGolVisitante       Int
+  posseDeBolaMandante       Float
+  posseDeBolaVisitante      Float
+  passesMandante            Int
+  passesVisitante           Int
+  precisaoPassesMandante    Float
+  precisaoPassesVisitante   Float
+  faltasMandante            Int
+  faltasVisitante           Int
+  cartoesVermelhosMandante  CartaoVermelhoMandante[]
+  cartoesVermelhosVisitante CartaoVermelhoVisitante[]
+  impedimentosMandante      Int
+  impedimentosVisitante     Int
+  escanteiosMandante        Int
+  escanteiosVisitante       Int
+  escalacaoMandante         EscalacaoMandante         @relation(fields: [escalacaoMandanteId], references: [id])
+  escalacaoVisitante        EscalacaoVisitante        @relation(fields: [escalacaoVisitanteId], references: [id])
+  escalacaoVisitanteId      Int
+  escalacaoMandanteId       Int
 }
 
-model Jogador {
-  id           Int                   @id @default(autoincrement())
-  nome         String
-  numeroCamisa Int
-  posicao      String
-  timeId       Int
-  // Relacionamentos
-  time         Time                  @relation(fields: [timeId], references: [id])
-  estatisticas EstatisticasJogador[]
+model EscalacaoVisitante {
+  id                 Int                       @id @default(autoincrement())
+  tecnico            String
+  jogadoresTitulares JogadorTitularVisitante[]
+  PartidaId          PartidaId[]
 }
 
-model EstatisticasJogador {
-  id               Int @id @default(autoincrement())
-  jogoId           Int
-  jogadorId        Int
-  gols             Int
-  assistencias     Int
-  cartoesAmarelos  Int
-  cartoesVermelhos Int
+model JogadorTitularVisitante {
+  id             Int    @id @default(autoincrement())
+  nome           String
+  numeroCamiseta Int
+  posicao        String
+  siglaPosicao   String
+  escalacaoId    Int
 
-  // Relacionamentos
-  jogador Jogador @relation(fields: [jogadorId], references: [id])
+  escalacao EscalacaoVisitante @relation(fields: [escalacaoId], references: [id])
+}
+
+model EscalacaoMandante {
+  id                 Int                      @id @default(autoincrement())
+  tecnico            String
+  jogadoresTitulares JogadorTitularMandante[]
+  PartidaId          PartidaId[]
+}
+
+model JogadorTitularMandante {
+  id             Int    @id @default(autoincrement())
+  nome           String
+  numeroCamiseta Int
+  posicao        String
+  siglaPosicao   String
+  escalacaoId    Int
+
+  escalacao EscalacaoMandante @relation(fields: [escalacaoId], references: [id])
+}
+
+model CartaoVermelhoMandante {
+  id         Int    @id @default(autoincrement())
+  nomeAtleta String
+  minuto     Int
+  periodo    String
+  partidaId  Int
+
+  partida PartidaId @relation(fields: [partidaId], references: [id])
+}
+
+model CartaoVermelhoVisitante {
+  id         Int    @id @default(autoincrement())
+  nomeAtleta String
+  minuto     Int
+  periodo    String
+  partidaId  Int
+
+  partida PartidaId @relation(fields: [partidaId], references: [id])
 }

@@ -1,212 +1,891 @@
-[
-  {
-    "partida_id": 17313,
-    "time_mandante": {
-      "time_id": 26,
-      "nome_popular": "Fluminense",
-      "sigla": "FLU",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d3492a6e0b.svg"
+{
+  "partida_id": 17300,
+  "campeonato": {
+    "campeonato_id": 10,
+    "nome": "Campeonato Brasileiro",
+    "slug": "campeonato-brasileiro",
+    "nome_popular": "Brasileirão",
+    "fase_atual": {
+      "fase_id": 506,
+      "nome": "Fase Única",
+      "slug": "fase-unica",
+      "tipo": "pontos-corridos",
+      "_link": "/v1/campeonatos/10/fases/506"
     },
-    "time_visitante": {
-      "time_id": 45,
-      "nome_popular": "Grêmio",
-      "sigla": "GRE",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d349c32bf1.svg"
+    "rodada_atual": {
+      "nome": "32ª Rodada",
+      "slug": "32a-rodada",
+      "rodada": 32,
+      "status": "agendada"
     },
-    "status": "finalizado",
-    "slug": "fluminense-gremio-17313",
-    "data_realizacao": "01/11/2024",
-    "hora_realizacao": "21:00",
-    "data_realizacao_iso": "2024-11-01T21:00:00-0300",
-    "_link": "/v1/partidas/17313"
+    "edicao": {
+      "edicao_id": 110,
+      "temporada": "2024",
+      "nome": "Campeonato Brasileiro 2024",
+      "nome_popular": "Brasileirão 2024",
+      "slug": "campeonato-brasileiro-2024"
+    }
   },
-  {
-    "partida_id": 17160,
-    "time_mandante": {
-      "time_id": 44,
-      "nome_popular": "Internacional",
-      "sigla": "INT",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d349b92103.svg"
-    },
-    "time_visitante": {
-      "time_id": 18,
-      "nome_popular": "Flamengo",
-      "sigla": "FLA",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d348e3f815.svg"
-    },
-    "status": "finalizado",
-    "slug": "internacional-flamengo-17160",
-    "data_realizacao": "30/10/2024",
-    "hora_realizacao": "19:00",
-    "data_realizacao_iso": "2024-10-30T19:00:00-0300",
-    "_link": "/v1/partidas/17160"
+  "placar": "Grêmio 3x1 Atlético-GO",
+  "time_mandante": {
+    "time_id": 45,
+    "nome_popular": "Grêmio",
+    "sigla": "GRE",
+    "escudo": "https://cdn.api-futebol.com.br/escudos/638d349c32bf1.svg"
   },
-  {
-    "partida_id": 17304,
-    "time_mandante": {
-      "time_id": 23,
-      "nome_popular": "Vasco",
-      "sigla": "VAS",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d3490f1e73.svg"
-    },
-    "time_visitante": {
-      "time_id": 68,
-      "nome_popular": "Bahia",
-      "sigla": "BAH",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34a8b6bd8.svg"
-    },
-    "status": "finalizado",
-    "slug": "vasco-bahia-17304",
-    "data_realizacao": "28/10/2024",
-    "hora_realizacao": "21:00",
-    "data_realizacao_iso": "2024-10-28T21:00:00-0300",
-    "_link": "/v1/partidas/17304"
+  "time_visitante": {
+    "time_id": 98,
+    "nome_popular": "Atlético-GO",
+    "sigla": "ACG",
+    "escudo": "https://cdn.api-futebol.com.br/escudos/638d34b9174a3.svg"
   },
-  {
-    "partida_id": 17308,
-    "time_mandante": {
-      "time_id": 204,
-      "nome_popular": "Cuiabá",
-      "sigla": "CUI",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34ebcdafa.svg"
-    },
-    "time_visitante": {
-      "time_id": 65,
-      "nome_popular": "Corinthians",
-      "sigla": "COR",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34a68419f.svg"
-    },
-    "status": "finalizado",
-    "slug": "cuiaba-corinthians-17308",
-    "data_realizacao": "28/10/2024",
-    "hora_realizacao": "19:00",
-    "data_realizacao_iso": "2024-10-28T19:00:00-0300",
-    "_link": "/v1/partidas/17308"
+  "placar_mandante": 3,
+  "placar_visitante": 1,
+  "disputa_penalti": false,
+  "status": "finalizado",
+  "slug": "gremio-atletico-go-17300",
+  "data_realizacao": "26/10/2024",
+  "hora_realizacao": "16:30",
+  "data_realizacao_iso": "2024-10-26T16:30:00-0300",
+  "estadio": {
+    "estadio_id": 54,
+    "nome_popular": "Arena do Grêmio"
   },
-  {
-    "partida_id": 17309,
-    "time_mandante": {
-      "time_id": 1,
-      "nome_popular": "Criciúma",
-      "sigla": "CRI",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d3482a8351.svg"
-    },
-    "time_visitante": {
-      "time_id": 57,
-      "nome_popular": "São Paulo",
-      "sigla": "SAO",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34a23c311.svg"
-    },
-    "status": "finalizado",
-    "slug": "criciuma-sao-paulo-17309",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "21:00",
-    "data_realizacao_iso": "2024-10-26T21:00:00-0300",
-    "_link": "/v1/partidas/17309"
+  "grupo": null,
+  "rodada": "31ª Rodada",
+  "fase": {
+    "fase_id": 506,
+    "nome": "Fase Única",
+    "slug": "fase-unica",
+    "tipo": "pontos-corridos",
+    "_link": "/v1/campeonatos/10/fases/506"
   },
-  {
-    "partida_id": 17301,
-    "time_mandante": {
-      "time_id": 30,
-      "nome_popular": "Atlético-MG",
-      "sigla": "CAM",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d3494f3380.svg"
+  "estatisticas": {
+    "mandante": {
+      "posse_de_bola": "50%",
+      "escanteios": 4,
+      "impedimentos": 0,
+      "faltas": 10,
+      "passes": {
+        "total": 320,
+        "completos": 282,
+        "errados": 38,
+        "precisao": "88%"
+      },
+      "finalizacao": {
+        "total": 5,
+        "no_gol": 3,
+        "pra_fora": 2,
+        "na_trave": 0,
+        "bloqueado": 0,
+        "precisao": "60%"
+      },
+      "defensivo": {
+        "defesas": 2
+      },
+      "desarmes": 5
     },
-    "time_visitante": {
-      "time_id": 44,
-      "nome_popular": "Internacional",
-      "sigla": "INT",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d349b92103.svg"
-    },
-    "status": "finalizado",
-    "slug": "atletico-mg-internacional-17301",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "19:00",
-    "data_realizacao_iso": "2024-10-26T19:00:00-0300",
-    "_link": "/v1/partidas/17301"
+    "visitante": {
+      "posse_de_bola": "50%",
+      "escanteios": 3,
+      "impedimentos": 0,
+      "faltas": 15,
+      "passes": {
+        "total": 237,
+        "completos": 192,
+        "errados": 45,
+        "precisao": "81%"
+      },
+      "finalizacao": {
+        "total": 5,
+        "no_gol": 3,
+        "pra_fora": 2,
+        "na_trave": 0,
+        "bloqueado": 1,
+        "precisao": "60%"
+      },
+      "defensivo": {
+        "defesas": 1
+      },
+      "desarmes": 10
+    }
   },
-  {
-    "partida_id": 17306,
-    "time_mandante": {
-      "time_id": 64,
-      "nome_popular": "Bragantino",
-      "sigla": "BGT",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34a5db2ec.svg"
+  "escalacoes": {
+    "mandante": {
+      "esquema_tatico": "4-3-3",
+      "tecnico": {
+        "tecnico_id": 86,
+        "nome_popular": "Renato Gaúcho"
+      },
+      "titulares": [
+        {
+          "atleta": {
+            "atleta_id": 9106,
+            "nome_popular": "Marchesín"
+          },
+          "camisa": "1",
+          "ordem": 0,
+          "posicao": {
+            "nome": "Goleiro",
+            "sigla": "GOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2465,
+            "nome_popular": "João Pedro "
+          },
+          "camisa": "18",
+          "ordem": 1,
+          "posicao": {
+            "nome": "Lateral Direito",
+            "sigla": "LAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 20028,
+            "nome_popular": "Rodrigo Ely"
+          },
+          "camisa": "5",
+          "ordem": 2,
+          "posicao": {
+            "nome": "Zagueiro Direito",
+            "sigla": "ZAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 5636,
+            "nome_popular": "Jemerson"
+          },
+          "camisa": "28",
+          "ordem": 3,
+          "posicao": {
+            "nome": "Zagueiro Esquerdo",
+            "sigla": "ZAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2311,
+            "nome_popular": "Reinaldo"
+          },
+          "camisa": "6",
+          "ordem": 4,
+          "posicao": {
+            "nome": "Lateral Esquerda",
+            "sigla": "LAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 8171,
+            "nome_popular": "Villasanti"
+          },
+          "camisa": "20",
+          "ordem": 5,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 619,
+            "nome_popular": "Pepê"
+          },
+          "camisa": "23",
+          "ordem": 6,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 18448,
+            "nome_popular": "Monsalve"
+          },
+          "camisa": "11",
+          "ordem": 7,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 2368,
+            "nome_popular": "Soteldo"
+          },
+          "camisa": "7",
+          "ordem": 8,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 8676,
+            "nome_popular": "Braithwaite"
+          },
+          "camisa": "22",
+          "ordem": 9,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 5169,
+            "nome_popular": "Aravena"
+          },
+          "camisa": "16",
+          "ordem": 10,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        }
+      ],
+      "reservas": [
+        {
+          "atleta": {
+            "atleta_id": 10642,
+            "nome_popular": "Rafael Cabral"
+          },
+          "camisa": "33",
+          "ordem": 0,
+          "posicao": {
+            "nome": "Goleiro",
+            "sigla": "GOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 14576,
+            "nome_popular": "Fábio"
+          },
+          "camisa": "2",
+          "ordem": 1,
+          "posicao": {
+            "nome": "Lateral Direito",
+            "sigla": "LAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 1943,
+            "nome_popular": "Pedro Geromel"
+          },
+          "camisa": "3",
+          "ordem": 2,
+          "posicao": {
+            "nome": "Zagueiro Direito",
+            "sigla": "ZAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 953,
+            "nome_popular": "Rodrigo Caio"
+          },
+          "camisa": "30",
+          "ordem": 3,
+          "posicao": {
+            "nome": "Zagueiro Direito",
+            "sigla": "ZAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 4371,
+            "nome_popular": "Mayk"
+          },
+          "camisa": "26",
+          "ordem": 4,
+          "posicao": {
+            "nome": "Lateral Esquerda",
+            "sigla": "LAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 9408,
+            "nome_popular": "Du Queiroz"
+          },
+          "camisa": "37",
+          "ordem": 5,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 15875,
+            "nome_popular": "Ronald"
+          },
+          "camisa": "35",
+          "ordem": 6,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 1651,
+            "nome_popular": "Edenílson"
+          },
+          "camisa": "15",
+          "ordem": 7,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 1295,
+            "nome_popular": "Nathan"
+          },
+          "camisa": "14",
+          "ordem": 8,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 14809,
+            "nome_popular": "Cristaldo"
+          },
+          "camisa": "10",
+          "ordem": 9,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 7986,
+            "nome_popular": "Pavón"
+          },
+          "camisa": "21",
+          "ordem": 10,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 18487,
+            "nome_popular": "Arezo"
+          },
+          "camisa": "9",
+          "ordem": 11,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        }
+      ]
     },
-    "time_visitante": {
-      "time_id": 22,
-      "nome_popular": "Botafogo",
-      "sigla": "BOT",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d349052558.svg"
-    },
-    "status": "finalizado",
-    "slug": "bragantino-botafogo-17306",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "19:00",
-    "data_realizacao_iso": "2024-10-26T19:00:00-0300",
-    "_link": "/v1/partidas/17306"
+    "visitante": {
+      "esquema_tatico": "4-5-1",
+      "tecnico": {
+        "tecnico_id": 77,
+        "nome_popular": "Umberto Louzer"
+      },
+      "titulares": [
+        {
+          "atleta": {
+            "atleta_id": 3146,
+            "nome_popular": "Ronaldo"
+          },
+          "camisa": "1",
+          "ordem": 0,
+          "posicao": {
+            "nome": "Goleiro",
+            "sigla": "GOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2250,
+            "nome_popular": "Bruno Tubarão"
+          },
+          "camisa": "2",
+          "ordem": 1,
+          "posicao": {
+            "nome": "Lateral Direito",
+            "sigla": "LAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2004,
+            "nome_popular": "Adriano Mina"
+          },
+          "camisa": "3",
+          "ordem": 2,
+          "posicao": {
+            "nome": "Zagueiro Direito",
+            "sigla": "ZAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2240,
+            "nome_popular": "Luiz Felipe"
+          },
+          "camisa": "4",
+          "ordem": 3,
+          "posicao": {
+            "nome": "Zagueiro Esquerdo",
+            "sigla": "ZAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2308,
+            "nome_popular": "Guilherme Romão"
+          },
+          "camisa": "6",
+          "ordem": 4,
+          "posicao": {
+            "nome": "Lateral Esquerda",
+            "sigla": "LAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 4520,
+            "nome_popular": "Roni"
+          },
+          "camisa": "5",
+          "ordem": 5,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2601,
+            "nome_popular": "Rhaldney"
+          },
+          "camisa": "7",
+          "ordem": 6,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2089,
+            "nome_popular": "Baralhas"
+          },
+          "camisa": "8",
+          "ordem": 7,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 25509,
+            "nome_popular": "Alejo Cruz"
+          },
+          "camisa": "11",
+          "ordem": 8,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 865,
+            "nome_popular": "Luiz Fernando "
+          },
+          "camisa": "10",
+          "ordem": 9,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 12264,
+            "nome_popular": "Derek"
+          },
+          "camisa": "9",
+          "ordem": 10,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        }
+      ],
+      "reservas": [
+        {
+          "atleta": {
+            "atleta_id": 5534,
+            "nome_popular": "Pedro Rangel"
+          },
+          "camisa": "12",
+          "ordem": 0,
+          "posicao": {
+            "nome": "Goleiro",
+            "sigla": "GOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 7393,
+            "nome_popular": "Vinicius"
+          },
+          "camisa": "14",
+          "ordem": 1,
+          "posicao": {
+            "nome": "Zagueiro Direito",
+            "sigla": "ZAD"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 25698,
+            "nome_popular": "Rodallega"
+          },
+          "camisa": "13",
+          "ordem": 2,
+          "posicao": {
+            "nome": "Lateral Esquerda",
+            "sigla": "LAE"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 8066,
+            "nome_popular": "Gonzalo Freitas"
+          },
+          "camisa": "15",
+          "ordem": 3,
+          "posicao": {
+            "nome": "Volante",
+            "sigla": "VOL"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 2405,
+            "nome_popular": "Shaylon"
+          },
+          "camisa": "16",
+          "ordem": 4,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 31171,
+            "nome_popular": "Jean Carlos"
+          },
+          "camisa": "20",
+          "ordem": 5,
+          "posicao": []
+        },
+        {
+          "atleta": {
+            "atleta_id": 2289,
+            "nome_popular": "Janderson"
+          },
+          "camisa": "17",
+          "ordem": 6,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 10060,
+            "nome_popular": "Lacava"
+          },
+          "camisa": "18",
+          "ordem": 7,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        },
+        {
+          "atleta": {
+            "atleta_id": 4251,
+            "nome_popular": "Hurtado"
+          },
+          "camisa": "19",
+          "ordem": 8,
+          "posicao": {
+            "nome": "Atacante",
+            "sigla": "ATA"
+          }
+        }
+      ]
+    }
   },
-  {
-    "partida_id": 17307,
-    "time_mandante": {
-      "time_id": 185,
-      "nome_popular": "Athletico-PR",
-      "sigla": "CAP",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34e1b8948.svg"
-    },
-    "time_visitante": {
-      "time_id": 37,
-      "nome_popular": "Cruzeiro",
-      "sigla": "CRU",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34984830b.svg"
-    },
-    "status": "finalizado",
-    "slug": "athletico-pr-cruzeiro-17307",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "18:30",
-    "data_realizacao_iso": "2024-10-26T18:30:00-0300",
-    "_link": "/v1/partidas/17307"
+  "gols": {
+    "mandante": [
+      {
+        "atleta": {
+          "atleta_id": 2368,
+          "nome_popular": "Soteldo"
+        },
+        "minuto": "39:44",
+        "periodo": "1º tempo",
+        "penalti": false,
+        "gol_contra": false
+      },
+      {
+        "atleta": {
+          "atleta_id": 619,
+          "nome_popular": "Pepê"
+        },
+        "minuto": "13:27",
+        "periodo": "2º tempo",
+        "penalti": false,
+        "gol_contra": false
+      },
+      {
+        "atleta": {
+          "atleta_id": 8171,
+          "nome_popular": "Villasanti"
+        },
+        "minuto": "37:45",
+        "periodo": "2º tempo",
+        "penalti": false,
+        "gol_contra": false
+      }
+    ],
+    "visitante": [
+      {
+        "atleta": {
+          "atleta_id": 12264,
+          "nome_popular": "Derek"
+        },
+        "minuto": "27:22",
+        "periodo": "1º tempo",
+        "penalti": false,
+        "gol_contra": false
+      }
+    ]
   },
-  {
-    "partida_id": 17300,
-    "time_mandante": {
-      "time_id": 45,
-      "nome_popular": "Grêmio",
-      "sigla": "GRE",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d349c32bf1.svg"
-    },
-    "time_visitante": {
-      "time_id": 98,
-      "nome_popular": "Atlético-GO",
-      "sigla": "ACG",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34b9174a3.svg"
-    },
-    "status": "finalizado",
-    "slug": "gremio-atletico-go-17300",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "16:30",
-    "data_realizacao_iso": "2024-10-26T16:30:00-0300",
-    "_link": "/v1/partidas/17300"
+  "substituicoes": {
+    "mandante": [
+      {
+        "saiu": {
+          "atleta_id": 18448,
+          "nome_popular": "Monsalve"
+        },
+        "entrou": {
+          "atleta_id": 1651,
+          "nome_popular": "Edenílson"
+        },
+        "periodo": "2º tempo",
+        "minuto": "22:11"
+      },
+      {
+        "saiu": {
+          "atleta_id": 5169,
+          "nome_popular": "Aravena"
+        },
+        "entrou": {
+          "atleta_id": 14809,
+          "nome_popular": "Cristaldo"
+        },
+        "periodo": "2º tempo",
+        "minuto": "22:24"
+      },
+      {
+        "saiu": {
+          "atleta_id": 8676,
+          "nome_popular": "Braithwaite"
+        },
+        "entrou": {
+          "atleta_id": 18487,
+          "nome_popular": "Arezo"
+        },
+        "periodo": "2º tempo",
+        "minuto": "39:01"
+      },
+      {
+        "saiu": {
+          "atleta_id": 619,
+          "nome_popular": "Pepê"
+        },
+        "entrou": {
+          "atleta_id": 15875,
+          "nome_popular": "Ronald"
+        },
+        "periodo": "2º tempo",
+        "minuto": "39:14"
+      },
+      {
+        "saiu": {
+          "atleta_id": 2368,
+          "nome_popular": "Soteldo"
+        },
+        "entrou": {
+          "atleta_id": 7986,
+          "nome_popular": "Pavón"
+        },
+        "periodo": "2º tempo",
+        "minuto": "43:45"
+      }
+    ],
+    "visitante": [
+      {
+        "saiu": {
+          "atleta_id": 2601,
+          "nome_popular": "Rhaldney"
+        },
+        "entrou": {
+          "atleta_id": 10060,
+          "nome_popular": "Lacava"
+        },
+        "periodo": "2º tempo",
+        "minuto": "08:46"
+      },
+      {
+        "saiu": {
+          "atleta_id": 865,
+          "nome_popular": "Luiz Fernando "
+        },
+        "entrou": {
+          "atleta_id": 2289,
+          "nome_popular": "Janderson"
+        },
+        "periodo": "2º tempo",
+        "minuto": "33:11"
+      },
+      {
+        "saiu": {
+          "atleta_id": 2308,
+          "nome_popular": "Guilherme Romão"
+        },
+        "entrou": {
+          "atleta_id": 2405,
+          "nome_popular": "Shaylon"
+        },
+        "periodo": "2º tempo",
+        "minuto": "44:31"
+      },
+      {
+        "saiu": {
+          "atleta_id": 4520,
+          "nome_popular": "Roni"
+        },
+        "entrou": {
+          "atleta_id": 8066,
+          "nome_popular": "Gonzalo Freitas"
+        },
+        "periodo": "2º tempo",
+        "minuto": "44:48"
+      },
+      {
+        "saiu": {
+          "atleta_id": 12264,
+          "nome_popular": "Derek"
+        },
+        "entrou": {
+          "atleta_id": 31171,
+          "nome_popular": "Jean Carlos"
+        },
+        "periodo": "2º tempo",
+        "minuto": "45:13"
+      },
+      {
+        "saiu": {
+          "atleta_id": 12264,
+          "nome_popular": "Derek"
+        },
+        "entrou": {
+          "atleta_id": 4251,
+          "nome_popular": "Hurtado"
+        },
+        "periodo": "2º tempo",
+        "minuto": "45:42"
+      }
+    ]
   },
-  {
-    "partida_id": 17302,
-    "time_mandante": {
-      "time_id": 102,
-      "nome_popular": "Vitória",
-      "sigla": "VIT",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d34bb4bf99.svg"
+  "cartoes": {
+    "amarelo": {
+      "mandante": [
+        {
+          "cartao_id": 51723,
+          "atleta": {
+            "atleta_id": 5636,
+            "nome_popular": "Jemerson"
+          },
+          "minuto": "18:02",
+          "periodo": "1º tempo"
+        },
+        {
+          "cartao_id": 51731,
+          "atleta": {
+            "atleta_id": 8676,
+            "nome_popular": "Braithwaite"
+          },
+          "minuto": "46:12",
+          "periodo": "1º tempo"
+        }
+      ],
+      "visitante": [
+        {
+          "cartao_id": 51725,
+          "atleta": {
+            "atleta_id": 865,
+            "nome_popular": "Luiz Fernando "
+          },
+          "minuto": "21:35",
+          "periodo": "1º tempo"
+        },
+        {
+          "cartao_id": 51727,
+          "atleta": {
+            "atleta_id": 2004,
+            "nome_popular": "Adriano Mina"
+          },
+          "minuto": "30:00",
+          "periodo": "1º tempo"
+        },
+        {
+          "cartao_id": 51729,
+          "atleta": {
+            "atleta_id": 12264,
+            "nome_popular": "Derek"
+          },
+          "minuto": "34:00",
+          "periodo": "1º tempo"
+        },
+        {
+          "cartao_id": 51736,
+          "atleta": {
+            "atleta_id": 2240,
+            "nome_popular": "Luiz Felipe"
+          },
+          "minuto": "20:09",
+          "periodo": "2º tempo"
+        },
+        {
+          "cartao_id": 51740,
+          "atleta": {
+            "atleta_id": 2289,
+            "nome_popular": "Janderson"
+          },
+          "minuto": "36:51",
+          "periodo": "2º tempo"
+        }
+      ]
     },
-    "time_visitante": {
-      "time_id": 26,
-      "nome_popular": "Fluminense",
-      "sigla": "FLU",
-      "escudo": "https://cdn.api-futebol.com.br/escudos/638d3492a6e0b.svg"
-    },
-    "status": "finalizado",
-    "slug": "vitoria-fluminense-17302",
-    "data_realizacao": "26/10/2024",
-    "hora_realizacao": "16:30",
-    "data_realizacao_iso": "2024-10-26T16:30:00-0300",
-    "_link": "/v1/partidas/17302"
+    "vermelho": {
+      "mandante": [],
+      "visitante": []
+    }
   }
-]
+}
