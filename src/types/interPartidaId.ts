@@ -33,21 +33,17 @@ export interface Edicao {
 
 export interface Partida {
     partida_id: number;
-    campeonato: Campeonato;
-    placar: string;
-    time_mandante: Time;
-    time_visitante: Time;
-    placar_mandante: number;
-    placar_visitante: number;
+    time_mandante_id: number;
+    time_mandante_nome: string;
+    time_mandante_sigla: string;
+    time_mandante_escudo: string;
+    time_visitante_id: number;
+    time_visitante_nome: string;
+    time_visitante_sigla: string;
+    time_visitante_escudo: string;
     status: string;
     slug: string;
-    data_realizacao: string;
-    hora_realizacao: string;
-    estadio: Estadio;
-    estatisticas: Estatisticas;
-    escalacoes: Escalacoes;
-    gols: Gols;
-    cartoes: Cartoes;
+    data_realizacao: Date;
 }
 
 export interface Time {
@@ -144,13 +140,13 @@ export interface Atleta {
 
 export interface JogadorTitular {
     atleta: {
-        atleta_id: number; // ID do jogador
-        nome_popular: string; // Nome do jogador
+        atleta_id: number;
+        nome_popular: string;
     };
-    camisa: string; // Número da camisa
+    camisa: string;
     posicao: {
-        nome: string; // Nome da posição
-        sigla: string; // Sigla da posição
+        nome: string;
+        sigla: string;
     };
 }
 
@@ -161,7 +157,7 @@ export interface Posicao {
 
 export interface Gol {
     atleta: Atleta;
-    minuto: String; // Aqui está definido como number
+    minuto: String;
     periodo: string;
 }
 
@@ -179,7 +175,7 @@ export interface Cartoes {
 }
 
 export interface Tecnico {
-    tecnico_id: number; // ou string, dependendo do seu tipo de ID
+    tecnico_id: number;
     nome_popular: string;
 }
 

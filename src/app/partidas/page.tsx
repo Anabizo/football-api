@@ -57,9 +57,8 @@ export default function Partidas() {
                 </button>
             </div>
             <div className="pt-1 pb-8 flex justify-center items-center">
-                <div className="p-10 rounded-3xl bg-cover text-white bg-gray-700 w-full max-w-3xl"> {/* Contêiner com o fundo */}
-                    <h2 className="text-white text-lg mb-4 text-center">10 Últimas Partidas</h2> {/* Título com centralização */}
-
+                <div className="p-10 rounded-3xl bg-cover text-white bg-gray-700 w-full max-w-3xl">
+                    <h2 className="text-white text-lg mb-4 text-center">10 Últimas Partidas</h2>
                     <ul className="grid grid-cols-2 gap-x-12 gap-y-4">
                         {partidas.map((partida: Partida) => (
                             <Link href={`/partidaId/${partida.partida_id}`} key={partida.partida_id}>

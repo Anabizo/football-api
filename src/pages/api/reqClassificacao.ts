@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const apiKey = process.env.FUTEBOL_API_KEY;
 
-// Interface para o time
 interface Time {
   time_id: number;
   nome_popular: string;
@@ -12,7 +11,6 @@ interface Time {
   escudo: string;
 }
 
-// Interface para a classificação de um time
 interface ClassificacaoTime {
   posicao: number;
   pontos: number;
@@ -29,7 +27,6 @@ interface ClassificacaoTime {
   ultimos_jogos: string[];
 }
 
-// Interface para o grupo
 interface Grupo {
   [key: string]: ClassificacaoTime[];
   "grupo-principal": ClassificacaoTime[]

@@ -1,6 +1,5 @@
-// pages/api/partida/[id].ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma'; // verifique o caminho para o prisma
+import prisma from '../../../lib/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { id } = req.query;
@@ -8,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method === 'GET') {
         try {
             const partida = await prisma.partidaId.findUnique({
-                where: { id: Number(id) }, // use partida_id se esse for o seu identificador
+                where: { id: Number(id) },
             });
 
             if (!partida) {
