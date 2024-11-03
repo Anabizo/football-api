@@ -99,3 +99,10 @@ model PartidaId {
   escanteiosVisitante     Int
   dataRealizacao          DateTime?
 }
+
+model Atualizacoes {
+  id                Int      @id @default(autoincrement())
+  dataClassificacao DateTime
+  dataPartida       DateTime
+  dataPartidaId     DateTime
+}

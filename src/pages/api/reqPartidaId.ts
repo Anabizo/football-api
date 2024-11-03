@@ -4,6 +4,8 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import { Cartao, Gol, Tecnico, JogadorTitular } from '../../types/interPartidaId'
+import { ehNecessarioAtualizar } from './classificacao';
+import { fetchPartidas } from '@/fetchReqs';
 
 const apiKey = process.env.FUTEBOL_API_KEY;
 
@@ -11,6 +13,19 @@ const apiKey = process.env.FUTEBOL_API_KEY;
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'GET') {
         try {
+            const dataPartida = await prisma.atualizacoes.findUnique({
+                where: { id: 1, }
+            })
+
+            if (ehNecessarioAtualizar(dataPartida?.dataPartida)) {
+                await fetchPartidas()
+                await prisma.atualizacoes.update({
+                    where: { id: 1, },
+                    data: { dataPartida: new Date() }
+                })
+            }
+
+
             const partidas = await prisma.partida.findMany({
                 select: { partida_id: true },
             });
@@ -122,9 +137,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
+ 
             await Promise.all(upsertGolsMandantePromises);
-
+ 
             const upsertGolsVisitantePromises = partidasData.flatMap(partidaData => {
                 if (partidaData.gols.visitante.length > 0) {
                     return partidaData.gols.visitante.map((gol: Gol) =>
@@ -143,9 +158,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
+ 
             await Promise.all(upsertGolsVisitantePromises);
-
+ 
             const upsertEscalacaoVisitantePromises = partidasData.flatMap(partidaData => {
                 if (partidaData.escalacoes && Array.isArray(partidaData.escalacoes.visitante.tecnicos)) {
                     return partidaData.escalacoes.visitante.tecnicos.map((tecnico: Tecnico) =>
@@ -161,9 +176,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
+ 
             await Promise.all(upsertEscalacaoVisitantePromises);
-
+ 
             const upsertEscalacaoMandantePromises = partidasData.flatMap(partidaData => {
                 if (partidaData.escalacoes && Array.isArray(partidaData.escalacoes.mandante.tecnicos)) {
                     return partidaData.escalacoes.mandante.tecnicos.map((tecnico: Tecnico) =>
@@ -179,9 +194,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
+ 
             await Promise.all(upsertEscalacaoMandantePromises);
-
+ 
             const upsertJogadorTitularVisitantePromises = partidasData.flatMap(partidaData => {
                 if (partidaData.escalacoes && Array.isArray(partidaData.escalacoes.visitante.titulares)) {
                     return partidaData.escalacoes.visitante.titulares.map((titular: JogadorTitular) =>
@@ -201,9 +216,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
+ 
             await Promise.all(upsertJogadorTitularVisitantePromises);
-
+ 
             const upsertJogadorTitularMandantePromises = partidasData.flatMap(partidaData => {
                 if (partidaData.escalacoes && Array.isArray(partidaData.escalacoes.mandante.titulares)) {
                     return partidaData.escalacoes.mandante.titulares.map((titular: JogadorTitular) =>
@@ -223,10 +238,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 }
                 return [];
             });
-
-
+ 
+ 
             await Promise.all(upsertJogadorTitularMandantePromises);
-
+ 
             const upsertCartaoAmareloMandantePromises = partidasData.flatMap(partidaData => {
                 if (!partidaData.cartoes || !partidaData.cartoes.amarelo || !partidaData.cartoes.amarelo.mandante.length) {
                     return [];
@@ -246,12 +261,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     })
                 );
             });
-
+ 
             const upsertCartaoAmareloVisitantePromises = partidasData.flatMap(partidaData => {
                 if (!partidaData.cartoes || !partidaData.cartoes.amarelo || !partidaData.cartoes.amarelo.visitante.length) {
                     return [];
                 }
-
+ 
                 return partidaData.cartoes.amarelo.visitante.map((cartao: Cartao) =>
                     prisma.cartaoAmareloVisitante.upsert({
                         where: { id: partidaData.escalacoes.visitante.tecnico.tecnico_id + 3 },
@@ -267,12 +282,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     })
                 );
             });
-
+ 
             const upsertCartaoVermelhoMandantePromises = partidasData.flatMap(partidaData => {
                 if (!partidaData.cartoes || !partidaData.cartoes.vermelho || !partidaData.cartoes.vermelho.mandante.length) {
                     return [];
                 }
-
+ 
                 return partidaData.cartoes.vermelho.mandante.map((cartao: Cartao) =>
                     prisma.cartaoVermelhoMandante.upsert({
                         where: { id: partidaData.escalacoes.mandante.tecnico.tecnico_id + 4 },
@@ -288,12 +303,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     })
                 );
             });
-
+ 
             const upsertCartaoVermelhoVisitantePromises = partidasData.flatMap(partidaData => {
                 if (!partidaData.cartoes || !partidaData.cartoes.vermelho || !partidaData.cartoes.vermelho.visitante.length) {
                     return [];
                 }
-
+ 
                 return partidaData.cartoes.vermelho.visitante.map((cartao: Cartao) =>
                     prisma.cartaoVermelhoVisitante.upsert({
                         where: { id: partidaData.escalacoes.visitante.tecnico.tecnico_id + 4 },
