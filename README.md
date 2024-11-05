@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# API-Football
 
-## Getting Started
+API-Football é uma aplicação web que fornece informações atualizadas sobre a classificação, resultados recentes e estatísticas detalhadas dos jogos da **Brasileirão Série A**. Construída com **Next.js** e **TypeScript**, a aplicação possui uma interface limpa que permite aos usuários visualizar a tabela da liga, navegar pelos últimos jogos e analisar estatísticas detalhadas para cada partida.
 
-First, run the development server:
+## Funcionalidades
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Classificação da Liga**:
+   - Exibe a classificação atual dos times na Série A do Brasileirão.
+   - Mostra posição, nome do time, pontos, partidas jogadas, vitórias, derrotas, empates, gols marcados, gols sofridos e saldo de gols
+  
+     <img src="https://github.com/user-attachments/assets/9b126d5d-25d4-4c2b-bc6b-4f2fc5807ea8" alt="page-classificacao" width="500" height="400">
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Últimas Partidas**:
+   - Lista as últimas 10 partidas da liga, incluindo datas, nomes dos times e status da partida.
+   - Permite aos usuários ver rapidamente os últimos resultados.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+     <img src="https://github.com/user-attachments/assets/0a7acb0e-1123-49ba-a920-ffae5820319a" alt="page-partidas" width="500" height="400">
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+3. **Estatísticas da Partida**:
+   - Fornece estatísticas detalhadas para cada partida, incluindo:
+     - Chutes
+     - Chutes a gol
+     - Percentual de posse de bola
+     - Total de passes
+     - Precisão de passe
+     - Faltas, impedimentos e escanteios
+    
+       <img src="https://github.com/user-attachments/assets/db516e8c-cd1e-43f3-9b0b-a214d5ddf7c0" alt="page-partidaId" width="500" height="400">
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tecnologias Utilizadas
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Frontend**: Next.js, React, Tailwind CSS, TypeScript
+- **Backend**: Node.js, Prisma ORM, PostgreSQL, Docker, api-futebol.
